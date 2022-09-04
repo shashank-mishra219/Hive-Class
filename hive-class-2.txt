@@ -13,3 +13,5 @@ create table department_data
 describe department_data;
 
 describe formatted department_data;
+
+load data local inpath 'file:///tmp/hive_class/depart_data.csv' into table department_data; 
