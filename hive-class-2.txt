@@ -36,3 +36,19 @@ create external table department_data_external
     > row format delimited                                                                                                                    
     > fields terminated by ','                                                                                                                
     > location '/tmp/hive_data_class_2/'; 
+    
+    
+    
+# work with Array data types
+
+create table employee                                                                                                                   
+    > (                                                                                                                                       
+    > id int,                                                                                                                                 
+    > name string,                                                                                                                            
+    > skills array<string>                                                                                                                    
+    > )                                                                                                                                       
+    > row format delimited                                                                                                                    
+    > fields terminated by ','                                                                                                                
+    > collection items terminated by ':';                                                                                                     
+
+load data local inpath 'file:///tmp/hive_class/array_data.csv' into table employee; 
