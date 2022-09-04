@@ -65,3 +65,19 @@ select
     > array_contains(skills,"HADOOP") as knows_hadoop,                                                                                        
     > sort_array(skills) as sorted_array                                                                                                                     
     > from employee; 
+    
+    
+# table for map data
+
+create table employee_map_data                                                                                                          
+    > (                                                                                                                                       
+    > id int,                                                                                                                                 
+    > name string,                                                                                                                            
+    > details map<string,string>                                                                                                              
+    > )                                                                                                                                       
+    > row format delimited                                                                                                                    
+    > fields terminated by ','                                                                                                                
+    > collection items terminated by '|'                                                                                                      
+    > map keys terminated by ':';
+    
+ load data local inpath 'file:///tmp/hive_class/map_data.csv' into table employee_map_data;
