@@ -9,5 +9,7 @@ create table department_data
       salary int)                                                                                                                             
       row format delimited                                                                                                                    
       fields terminated by ','; 
-      describe department_data;
-      describe formatted department_data;
+    
+describe department_data;
+      
+describe formatted department_data;
