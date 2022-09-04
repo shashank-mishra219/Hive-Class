@@ -57,3 +57,11 @@ load data local inpath 'file:///tmp/hive_class/array_data.csv' into table employ
 # Get element by index in hive array data type
 
 select id, name, skills[0] as prime_skill from employee;
+
+select                                                                                                                                  
+    > id,                                                                                                                                     
+    > name,                                                                                                                                   
+    > size(skills) as size_of_each_array,                                                                                                     
+    > array_contains(skills,"HADOOP") as knows_hadoop,                                                                                        
+    > sort_array(skills) as sorted_array                                                                                                                     
+    > from employee; 
