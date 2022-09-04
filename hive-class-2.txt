@@ -22,3 +22,17 @@ set hive.cli.print.header = true;
 
 # Load data from hdfs location
 load data inpath '/tmp/hive_data_class_2/' into table department_data_from_hdfs;
+
+
+# Create external table 
+
+create external table department_data_external                                                                                          
+    > (                                                                                                                                       
+    > dept_id int,                                                                                                                            
+    > dept_name string,                                                                                                                       
+    > manager_id int,                                                                                                                         
+    > salary int                                                                                                                              
+    > )                                                                                                                                       
+    > row format delimited                                                                                                                    
+    > fields terminated by ','                                                                                                                
+    > location '/tmp/hive_data_class_2/'; 
