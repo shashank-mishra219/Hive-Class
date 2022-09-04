@@ -1,0 +1,2 @@
+create database hive_class_b1;
+use hive_class_b1;
