@@ -26,7 +26,7 @@ load data local inpath 'file:///tmp/hive_class/csv_file.csv' into table csv_tabl
 
 # download hive catalog jar file , if serde libraries are not imported
 
-Google Search for -> hive-hcatalog-core-0.14.0.jar
+https://repo1.maven.org/maven2/org/apache/hive/hcatalog/hive-hcatalog-core/0.14.0/
 
 # add jar file into your hive shell
 
