@@ -1,0 +1,4 @@
+# use this command to get details about serilization and deserialization
+
+describe formatted sales_data_pq_final;
+
