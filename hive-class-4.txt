@@ -142,8 +142,24 @@ ar_id;
 # after creating the table, check the number of files in hdfs location
 
 
- 
- 
+# set this property if doing static partition
+set hive.mapred.mode=strict;
+
+# create table command for partition tables - for Static
+
+create table sales_data_static_part                                                                                                     
+    > (                                                                                                                                       
+    > ORDERNUMBER int,                                                                                                                        
+    > QUANTITYORDERED int,                                                                                                                    
+    > SALES float,                                                                                                                            
+    > YEAR_ID int                                                                                                                             
+    > )                                                                                                                                       
+    > partitioned by (COUNTRY string); 
+    
+# load data in static partition
+
+insert overwrite table sales_data_static_part partition(country = 'USA') select ordernumber,quantityordered,sales,year_id from sales_ord
+er_data_orc where country = 'USA';
   
 
 
