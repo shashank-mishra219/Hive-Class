@@ -2,3 +2,30 @@
 
 describe formatted sales_data_pq_final;
 
+
+# create table as CSV SerDe
+
+create table csv_table                                                                                                                  
+    > (                                                                                                                                       
+    > name string,                                                                                                                            
+    > location string                                                                                                                         
+    > )                                                                                                                                       
+    > row format serde 'org.apache.hadoop.hive.serde2.OpenCSVSerde'                                                                           
+    > with serdeproperties (                                                                                                                  
+    >  "separatorChar" = ",",                                                                                                                 
+    >  "quoteChar" = "\"",                                                                                                                    
+    >  "escapeChar" = "\\"                                                                                                                    
+    > )                                                                                                                                       
+    > stored as textfile                                                                                                                      
+    > tblproperties ("skip.header.line.count" = "1"); 
+    
+
+# download hive catalog jar file , if serde libraries are not imported
+
+Google Search for -> hive-hcatalog-core-0.14.0.jar
+
+# add jar file into your hive shell
+
+hive> add jar /tmp/hive_class/hive-hcatalog-core-0.14.0.jar;
+
+
