@@ -125,5 +125,25 @@ In order to limit the maximum number of reducers:
 In order to set a constant number of reducers:                                                                                                
   set mapreduce.job.reduces=<number> 
   
+ # change number of reducers to 3
+ 
+ set mapreduce.job.reduces=3;
+ create table sales_order_grouped_orc_v1 stored as orc as select year_id, sum(sales) as total_sales from sales_order_data_orc group by ye
+ar_id;
+
+# after creating the table, check the number of files in hdfs location
+
+# change number of reducers to 2
+ 
+ set mapreduce.job.reduces=2;
+ create table sales_order_grouped_orc_v2 stored as orc as select year_id, sum(sales) as total_sales from sales_order_data_orc group by ye
+ar_id;
+
+# after creating the table, check the number of files in hdfs location
+
+
+ 
+ 
+  
 
 
