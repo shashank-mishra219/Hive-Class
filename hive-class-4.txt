@@ -114,3 +114,16 @@ stored as orc;
 # copy data from sales_order_data_csv_v1 to sales_order_data_orc
 
 
+select year_id, sum(sales) as total_sales from sales_order_data_orc group by year_id; 
+
+# here only 1 map and 1 reduce task will get created
+
+In order to change the average load for a reducer (in bytes):                                                                                 
+  set hive.exec.reducers.bytes.per.reducer=<number>                                                                                           
+In order to limit the maximum number of reducers:                                                                                             
+  set hive.exec.reducers.max=<number>                                                                                                         
+In order to set a constant number of reducers:                                                                                                
+  set mapreduce.job.reduces=<number> 
+  
+
+
