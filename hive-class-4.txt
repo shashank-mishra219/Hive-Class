@@ -19,6 +19,10 @@ create table csv_table
     > stored as textfile                                                                                                                      
     > tblproperties ("skip.header.line.count" = "1"); 
     
+# load data from local
+
+load data local inpath 'file:///tmp/hive_class/csv_file.csv' into table csv_table;
+    
 
 # download hive catalog jar file , if serde libraries are not imported
 
