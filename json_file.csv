@@ -1,0 +1,3 @@
+{"name": "Amit", "id": 1, "skills": ["Hadoop", "Python"]}
+{"name": "sumit", "id": 2, "skills": ["Hadoop", "Hive"]}
+{"name": "Shashank", "id": 3, "skills": ["Airflow", "Python"]}
