@@ -7,3 +7,16 @@ add file /tmp/hive_class/multiply_udf.py;
 
 select transform(year_id,quantityordered) using 'python multicol_python_udf.py' as (year_id string, square int) from sales_order_data_orc
  limit 5;
+
+
+# add udf in hive shell
+
+add file /tmp/hive_class/many_column_udf.py;
+
+
+# statement to execute python udf for multiple columns
+
+hive> select transform(country,ordernumber,quantityordered)                                                                                   
+    > using 'python many_column_udf.py' as (country string, ordernumber int, multiplied_quantity int)                                         
+    > from sales_order_data_orc limit 10;
+
