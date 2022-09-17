@@ -72,6 +72,51 @@ hive> create table buck_locations
  insert overwrite table buck_locations select * from locations;
  
  
+ 
+ 
+ ------------------------------------------------------------------------------------------------------------------------------
+Reduce-Side Join
+------------------------------------------------------------------------------------------------------------------------------
+
+SET hive.auto.convert.join=false;
+SELECT * FROM buck_users u INNER JOIN buck_locations l ON u.id = l.id;
+
+Hadoop job information for Stage-1: number of mappers: 2; number of reducers: 1
+
+------------------------------------------------------------------------------------------------------------------------------
+Map Side Join
+------------------------------------------------------------------------------------------------------------------------------
+
+SET hive.auto.convert.join=true;
+SELECT * FROM buck_users u INNER JOIN buck_locations l ON u.id = l.id;
+
+Mapred Local Task Succeeded . Convert the Join into MapJoin
+Number of reduce tasks is set to 0 since there's no reduce operator
+Hadoop job information for Stage-3: number of mappers: 1; number of reducers: 0
+
+------------------------------------------------------------------------------------------------------------------------------
+Bucket Map Join
+------------------------------------------------------------------------------------------------------------------------------
+set hive.optimize.bucketmapjoin=true;
+SET hive.auto.convert.join=true;
+
+SELECT * FROM buck_users u INNER JOIN buck_locations l ON u.id = l.id;
+
+------------------------------------------------------------------------------------------------------------------------------
+Sorted Merge Bucket Map Join
+------------------------------------------------------------------------------------------------------------------------------
+set hive.enforce.sortmergebucketmapjoin=false;
+set hive.auto.convert.sortmerge.join=true;
+set hive.optimize.bucketmapjoin = true;
+set hive.optimize.bucketmapjoin.sortedmerge = true;
+
+
+SET hive.auto.convert.join=false;
+SELECT * FROM buck_users u INNER JOIN buck_locations l ON u.id = l.id;
+
+No MapLocal Task to create hash table.
+Hadoop job information for Stage-1: number of mappers: 2; number of reducers: 0
+ 
     
     
 
