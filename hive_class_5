@@ -1,2 +1,9 @@
+# add udf in hive shell
+
+add file /tmp/hive_class/multiply_udf.py;
+
+
+# statement to execute python udf
+
 select transform(year_id,quantityordered) using 'python multicol_python_udf.py' as (year_id string, square int) from sales_order_data_orc
  limit 5;
