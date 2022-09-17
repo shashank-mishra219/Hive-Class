@@ -43,6 +43,8 @@ hive> create table locations
     > fields terminated by ','; 
     
 load data local inpath 'file:///tmp/hive_class/locations.csv' into table locations; 
+
+set hive.enforce.bucketing=true;
     
     
  hive> create table buck_users                                                                                                                 
